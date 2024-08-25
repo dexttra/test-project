@@ -15,7 +15,11 @@ namespace test_project.Db.Repositories
         {
             this.databaseContext = databaseContext;
         }
-        public void AddProduct(Product product)
+        public Product TryGetById(Guid id)
+        {
+            return databaseContext.Products.SingleOrDefault(p => p.Id == id);
+        }
+        public void Add(Product product)
         {
             databaseContext.Products.Add(product);
             databaseContext.SaveChanges();

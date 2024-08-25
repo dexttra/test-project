@@ -15,7 +15,12 @@ namespace test_project.Db.Repositories
         {
             this.databaseContext = databaseContext;
         }
-        public void AddCategory(Category category)
+        public Category TryGetById(Guid id)
+        {
+            return databaseContext.Categories.SingleOrDefault(c => c.Id == id);
+        }
+
+        public void Add(Category category)
         {
             databaseContext.Categories.Add(category);
             databaseContext.SaveChanges();

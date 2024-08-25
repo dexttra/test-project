@@ -9,7 +9,8 @@ namespace test_project.Db.Repositories
 {
     public interface ICategoriesRepository 
     {
+        Category TryGetById(Guid id);
         List<Category> GetAll();
-        void AddCategory(Category category);
+        void Add(Category category);
     }
 }

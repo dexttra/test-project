@@ -1,5 +1,19 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CategoryViewModel
+
+<h2 style="text-align: center;">Добавление категории</h2>
+<form class="form" method="post" style="max-width: 300px; margin: 0 auto;">
+
+    <div class="form-group">
+        <label asp-for="Name">Название</label><br />
+        <input class="form-control" asp-for="Name" />
+    </div>
+
+    <br />
+    <div style="text-align: center;">
+        <button asp-controller="Home"
+                asp-action="AddCategory"
+                type="submit" class="btn btn-primary">
+            Добавить категорию
+        </button>
+    </div>
+</form>

@@ -1,5 +1,44 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model List<ProductViewModel>
+
+<h1>Список продуктов</h1>
+
+@if (Model == null || !Model.Any())
+{
+    <p>Нет доступных продуктов.</p>
+}
+else
+{
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Цена</th>
+                    <th>Категория</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Price</td>
+                        <td>
+                            @{
+                                // Получаем название категории по CategoryId
+                                var categoryName = string.Empty;
+                                if (ViewBag.Categories is Dictionary<Guid, string> categories)
+                                {
+                                    categories.TryGetValue(product.CategoryId, out categoryName);
+                                }
+                            }
+                            @categoryName
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }

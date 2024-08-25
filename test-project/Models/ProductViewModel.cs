@@ -1,18 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace test_project.Models
+public class ProductViewModel
 {
-    public class ProductViewModel
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Description { get; set; }
-        public CategoryViewModel Category { get; set; }
+    [Required(ErrorMessage = "Введите название продукта")]
+    public string Name { get; set; }
 
-        // Добавлено поле для выбора категории
-        public int CategoryId { get; set; }
-        public IEnumerable<SelectListItem> Categories { get; set; }
-    }
+    [Required(ErrorMessage = "Введите цену продукта")]
+    [Range(0.01, double.MaxValue, ErrorMessage = "Цена должна быть положительным числом")]
+    public decimal Price { get; set; }
+
+    [Required(ErrorMessage = "Введите описание продукта")]
+    public string Description { get; set; }
+
+    [Required(ErrorMessage = "Выберите категорию")]
+    public Guid CategoryId { get; set; } 
 }
