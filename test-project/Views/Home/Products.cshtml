@@ -25,17 +25,7 @@ else
                         <td>@product.Name</td>
                         <td>@product.Description</td>
                         <td>@product.Price</td>
-                        <td>
-                            @{
-                                // Получаем название категории по CategoryId
-                                var categoryName = string.Empty;
-                                if (ViewBag.Categories is Dictionary<Guid, string> categories)
-                                {
-                                    categories.TryGetValue(product.CategoryId, out categoryName);
-                                }
-                            }
-                            @categoryName
-                        </td>
+                        <td>@product.CategoryViewModel.Name</td>
                     </tr>
                 }
             </tbody>

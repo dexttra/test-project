@@ -40,7 +40,7 @@ namespace test_project.Controllers
                     Name = product.Name,
                     Description = product.Description,
                     Price = product.Price,
-                    CategoryId = product.CategoryId 
+                    CategoryId = product.CategoryViewModel.Id 
                 };
 
                 productsStorage.Add(productDb);
@@ -63,7 +63,11 @@ namespace test_project.Controllers
                     Name = p.Name,
                     Description = p.Description,
                     Price = p.Price,
-                    CategoryId = p.CategoryId
+                    CategoryViewModel = new CategoryViewModel
+                    {
+                        Id = p.Id,
+                        Name = categoriesStorage.TryGetById(p.CategoryId).Name
+                    }
                 };
 
                 productViewModels.Add(productViewModel);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using test_project.Models;
 
 public class ProductViewModel
 {
@@ -13,5 +14,5 @@ public class ProductViewModel
     public string Description { get; set; }
 
     [Required(ErrorMessage = "Выберите категорию")]
-    public Guid CategoryId { get; set; } 
+    public CategoryViewModel CategoryViewModel { get; set; } 
 }
